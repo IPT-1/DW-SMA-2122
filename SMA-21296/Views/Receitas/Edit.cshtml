@@ -1,0 +1,44 @@
+﻿@model SMA_21296.Models.Receita
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h1>Editar</h1>
+
+<h4>Receita</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Data" class="control-label"></label>
+                <input asp-for="Data" class="form-control" />
+                <span asp-validation-for="Data" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MedicoFK" class="control-label"></label>
+                <select asp-for="MedicoFK" class="form-control" asp-items="ViewBag.MedicoFK"></select>
+                <span asp-validation-for="MedicoFK" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PacienteFK" class="control-label"></label>
+                <select asp-for="PacienteFK" class="form-control" asp-items="ViewBag.PacienteFK"></select>
+                <span asp-validation-for="PacienteFK" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

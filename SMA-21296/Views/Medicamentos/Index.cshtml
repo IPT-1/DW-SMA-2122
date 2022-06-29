@@ -1,0 +1,73 @@
+﻿@model IEnumerable<SMA_21296.Models.Medicamento>
+
+@{
+    ViewData["Title"] = "Medicamentos";
+}
+
+<h1>Medicamentos</h1>
+
+@if (User.IsInRole("Admin")) {
+    <p>
+        <a asp-action="Create">Inserir novo medicamento</a>
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Laboratorio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Observacoes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Foto)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Laboratorio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observacoes)
+            </td>
+            <td>
+                
+                @if (string.IsNullOrEmpty(item.Foto))
+                {
+                    @*@Html.DisplayFor(modelItem => item.Foto)*@
+                    <a><img src="~/Fotos/@item.Foto" alt="Foto do medicamento: @Html.DisplayFor(modelItem => item.Foto)" 
+                    title="@item.Nome" height="50" /></a>
+                } else
+                {
+                    @*@Html.DisplayFor(modelItem => item.Foto)*@
+                    <img src="~/Fotos/@item.Foto" alt="Foto do medicamento: @Html.DisplayFor(modelItem => item.Foto)" 
+                    title="@item.Nome" height="50" />
+                }
+
+            </td>
+
+            @if (User.IsInRole("Admin")) {
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                </td>  
+            }
+                
+
+        </tr>
+}
+    </tbody>
+</table>

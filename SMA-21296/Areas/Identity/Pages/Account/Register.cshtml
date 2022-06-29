@@ -1,0 +1,90 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Registar um novo utente.";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    
+    <div class="row">
+        <div class="col-md-4">
+            
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @* Lê os dados de Autenticação. *@
+            <div class="form-floating">
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
+                <label asp-for="Input.Email"></label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
+                <label asp-for="Input.Password"></label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
+                <label asp-for="Input.ConfirmPassword"></label>
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>    
+        </div>
+
+        <div class="col-md-4"
+            <hr />
+        
+            @* Ler os dados do Utente *@
+
+            @* --------------- NOME --------------- *@
+            <div class="form-floating">
+                <input asp-for="Input.Utente.Nome" class="form-control" autocomplete="username" aria-required="true" />
+                <label asp-for="Input.Utente.Nome"></label>
+                <span asp-validation-for="Input.Utente.Nome" class="text-danger"></span>
+            </div>
+
+            @* ------------- TELEMÓVEL ------------ *@
+            <div class="form-floating">
+                <input asp-for="Input.Utente.Telemovel" class="form-control" autocomplete="username" aria-required="true" />
+                <label asp-for="Input.Utente.Telemovel"></label>
+                <span asp-validation-for="Input.Utente.Telemovel" class="text-danger"></span>
+            </div>
+
+            @* ------ NÚMERO UTENTE DE SAÚDE ------ *@
+            <div class="form-floating">
+                <input asp-for="Input.Utente.NumeroUtenteSaude" class="form-control" autocomplete="username" aria-required="true" />
+                <label asp-for="Input.Utente.NumeroUtenteSaude"></label>
+                <span asp-validation-for="Input.Utente.NumeroUtenteSaude" class="text-danger"></span>
+            </div>
+
+            @* -------------- SEXO ---------------- *@
+            <div class="form-floating">
+                <input asp-for="Input.Utente.Sexo" class="form-control" autocomplete="username" aria-required="true" />
+                <label asp-for="Input.Utente.Sexo"></label>
+                <span asp-validation-for="Input.Utente.Sexo" class="text-danger"></span>
+            </div>
+
+            @* -------------- FUNÇÃO -------------- *@
+            <div class="form-floating">
+                <input asp-for="Input.Utente.Funcao" class="form-control" autocomplete="username" aria-required="true" />
+                <label asp-for="Input.Utente.Funcao"></label>
+                <span asp-validation-for="Input.Utente.Funcao" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <br />
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Registar</button>  
+        </div>
+    </div>
+
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

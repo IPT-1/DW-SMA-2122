@@ -1,0 +1,48 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@*@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager*@
+
+@inject SignInManager<ApplicationUser> _signInManager
+@inject UserManager<ApplicationUser> _userManager
+
+<ul class="navbar-nav">
+
+@if (_signInManager.IsSignedIn(User))
+{
+
+    // Utilizador está autenticado:
+    // Ler os dados do utilizador.
+    var dadosUtilizador = await _userManager.GetUserAsync(User);
+    var dadosCargos = await _userManager.GetRolesAsync(dadosUtilizador);
+
+    <li class="nav-item">
+        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Bem-Vindo, <b>@dadosUtilizador.Nome</b>!
+
+            @* Mostrar o cargo do utilizador. *@
+            @foreach(var item in dadosCargos ?? Enumerable.Empty<string>()) {
+                <i> - @item</i>
+            }
+
+        </a>
+    </li>
+
+    @if (User.IsInRole("Admin") || User.IsInRole("Medico")) {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Registar novo utilizador</a>
+        </li>    
+    }
+
+    <li class="nav-item">
+        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button  type="submit" class="nav-link btn btn-link text-dark">Sair da Conta</button>
+        </form>
+    </li>
+}
+else
+{        
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Entrar</a>
+    </li>
+}
+</ul>
