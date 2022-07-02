@@ -51,6 +51,25 @@ namespace SMA_21296.Data {
                 new IdentityRole { Id = "p", Name = "Paciente", NormalizedName = "PACIENTE" }
                 );
 
+
+            //// Adicionar o administrador Master.
+            //var hasher = new PasswordHasher<IdentityUser>();
+            //modelBuilder.Entity<IdentityUser>().HasData(
+            //        new IdentityUser {
+            //            Id = "masteradmin",
+            //            UserName = "masteradmin",
+            //            Email = "masteradmin@sma.pt",
+            //            NormalizedEmail = "MASTERADMIN@SMA.PT",
+            //            NormalizedUserName = "MASTERADMIN",
+            //            PasswordHash = hasher.HashPassword(null, "masteradmin123#")
+            //        }
+            //    );
+
+            //// Adicionar o administrador criado ao cargo 'Admin'
+            //modelBuilder.Entity<IdentityUserRole<string>>().HasData(
+            //        new IdentityUserRole<string> { RoleId = "a", UserId = "masteradmin" }
+            //    );
+
         }
 
         // Definir tabelas para a base de dados.

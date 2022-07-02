@@ -280,7 +280,7 @@ namespace SMA_21296.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Medicamentos");
+                    b.ToTable("Medicamentos", (string)null);
                 });
 
             modelBuilder.Entity("SMA_21296.Models.Receita", b =>
@@ -306,7 +306,7 @@ namespace SMA_21296.Data.Migrations
 
                     b.HasIndex("PacienteFK");
 
-                    b.ToTable("Receitas");
+                    b.ToTable("Receitas", (string)null);
                 });
 
             modelBuilder.Entity("SMA_21296.Models.ReceitaMedicamento", b =>
@@ -333,7 +333,7 @@ namespace SMA_21296.Data.Migrations
 
                     b.HasIndex("ReceitaFK");
 
-                    b.ToTable("ReceitasMedicamento");
+                    b.ToTable("ReceitasMedicamento", (string)null);
                 });
 
             modelBuilder.Entity("SMA_21296.Models.Utente", b =>
@@ -370,7 +370,7 @@ namespace SMA_21296.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Utentes");
+                    b.ToTable("Utentes", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
