@@ -32,6 +32,7 @@ namespace SMA_21296.Models {
         /// </summary>
         [Required(ErrorMessage = "O {0} é de preenchimento obrigatório.")]
         [Display(Name = "Telemóvel")]
+        [RegularExpression("9[1236][0-9]{7}|2[1-9][0-9]{7}", ErrorMessage = "Número de telemóvel inválido.")]
         public string Telemovel { get; set; }
 
         /// <summary>
@@ -51,7 +52,7 @@ namespace SMA_21296.Models {
         /// <summary>
         /// Tipo de Utente. (P - Paciente / M - Médico)
         /// </summary>
-        [StringLength(1, ErrorMessage = "O {0} só aceita um caráter.")]
+        [StringLength(1, ErrorMessage = "O {0} só aceita um caráter. (P)aciente, (M)edico")]
         [Display(Name = "Paciente / Médico")]
         public string Funcao { get; set; }
 

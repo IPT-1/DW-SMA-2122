@@ -13,24 +13,33 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
+            
+            @* Campo para o Nome *@
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
                 <input asp-for="Nome" class="form-control" />
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
+            
+            @* Campo para o Laboratório *@
             <div class="form-group">
                 <label asp-for="Laboratorio" class="control-label"></label>
                 <input asp-for="Laboratorio" class="form-control" />
                 <span asp-validation-for="Laboratorio" class="text-danger"></span>
             </div>
+            
+            @* Campo para as Observações *@
             <div class="form-group">
                 <label asp-for="Observacoes" class="control-label"></label>
-                <input asp-for="Observacoes" class="form-control" />
+                <textarea  asp-for="Observacoes" class="form-control" rows="5" ></textarea>
                 <span asp-validation-for="Observacoes" class="text-danger"></span>
             </div>
+            
+            @* Campo para a Fotografia *@
             <div class="form-group">
                 <label asp-for="Foto" class="control-label"></label>
-                <input asp-for="Foto" class="form-control" />
+                @*<input asp-for="Foto" class="form-control" />*@
+                <input type="file" name="novaFoto" class="form-control" accept=".jpg,.png"/> 
                 <span asp-validation-for="Foto" class="text-danger"></span>
             </div>
             <div class="form-group">

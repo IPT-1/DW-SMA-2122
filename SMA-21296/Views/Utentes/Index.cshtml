@@ -51,11 +51,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Funcao)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-            </td>
+            
+            @if (User.IsInRole("Admin") || User.IsInRole("Medico")) {
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                </td>  
+            }
+
         </tr>
 }
     </tbody>
